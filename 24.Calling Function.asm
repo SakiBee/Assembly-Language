@@ -1,4 +1,4 @@
-         .model small
+.model small
 .stack 100h
 .data
 a db 'Take input from user $'
