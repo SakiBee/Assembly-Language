@@ -1,0 +1,138 @@
+1.Basic Structure:
+
+.model small			//code size
+.stack 100h				//stack size
+.code
+main proc
+    ;your operations here
+    
+    exit:
+    mov ah, 4ch
+    int 21h
+    main endp
+end main
+
+
+2. 
+Another segment after the stack segment is: The data segment (.data)
+We can define any value (integer or string) in this segment.
+
+.data
+STARS db 0ah,0dh,'**********$' //0ah and 0ds for newline and carriage return. Dollar sign is mandatory for string
+msg1 db 3  				 // variable name -> variable size -> value
+msg db ? 				 //taking input from the users in the msg variable.
+
+//And in main procedure, the data segment should be initialized.
+
+main proc
+mov ax,@data			//initialize ds
+mov ds, ax
+
+to print a string:
+
+mov ah, 9 ; prepare to display
+lea dx, STARS                 //
+int 21h ;   display for once, it can be displayed several times by interrupting several times.
+
+
+3. to print a new line:
+
+mov ah, 2
+mov dl, 10                    //newline
+int 21h				//execution
+mov dl, 13  			//carriage return
+int 21h
+
+
+4. 
+Integer value input:
+mov ah, 1   			// input done in (al) as usual
+int 21h
+mov bl, al				// save the value in bl register
+
+another
+mov ah, 1				// input done
+int 21h				
+mov bh, al				// save in bh. because in first input is in bl
+
+5.
+Print integer
+
+mov ah, 2
+int 21h
+mov dl, bl				// output by dl
+int 21h
+
+another
+
+mov ah, 2
+int 21h
+mov dl, bh
+int 21h
+
+6.
+Pre-defined integer value print 
+first, it should be searched from ascii table by adding 48
+then print
+mov ah, 2
+add msg1, 48
+mov dl, msg1
+int 21h
+
+
+7.
+input msg variable
+
+mov ah, 1
+int 21h
+mov msg1, al
+
+Output:
+mov ah, 2
+mov dl, msg
+int 21h
+
+
+8.
+Some info:
+
+mov ah, 1  =>  single key input
+mov ah, 2  => single char output
+mov ah, 9  => char string output
+
+
+9.
+Add 2 numbers
+
+add bl, bh
+sub bl, 48
+display
+
+10.
+Subtract 2 numbers
+
+sub bl, bh
+add bl, 48
+display
+
+
+11.
+Upper to Lower case
+
+A -> a    = sub 32
+a -> A    = add 32
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
