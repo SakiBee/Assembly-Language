@@ -1,3 +1,4 @@
+;this code is incomplete
 .section .data
     f:string "%d\n"
 .section .text
