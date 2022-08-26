@@ -1,4 +1,4 @@
-;this code is incomplete
+;this code is incomplete. I will fix if soon
 .section .data
     f:string "%d\n"
 .section .text
