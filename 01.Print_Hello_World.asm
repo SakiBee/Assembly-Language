@@ -1,4 +1,4 @@
-           ;TITLE: A letter displayed in the next line
+
 
 .model small
 .stack 100h
