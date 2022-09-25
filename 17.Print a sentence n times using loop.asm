@@ -1,5 +1,4 @@
-;Print a string for n times. But each times 
-;a character will be erased from the front of the string
+;Print a string for n times. Here we showed only 10 times
 
 .model small
 .stack 100h
@@ -10,11 +9,11 @@ main proc
     mov ax, @data
     mov ds, ax
     
-    mov cx, 10
-    mov ah, 9
-    lea dx, m
+    mov cx, 10    
     
     level:
+        mov ah, 9
+        lea dx, m
         int 21h
         inc dx
     loop level
